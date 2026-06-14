@@ -8,35 +8,41 @@ export default {
     extend: {
       colors: {
         brand: {
-          light: '#F4F4F5',
-          DEFAULT: '#0A0A0A',
-          dark: '#0A0A0A',
+          light: '#f4f4f5',
+          DEFAULT: '#0a0a0a',
+          dark: '#000000',
         },
         status: {
           green: {
-            bg: '#F4F4F5',
-            text: '#0A0A0A',
+            bg: '#0a0a0a',
+            text: '#ffffff',
           },
           orange: {
-            bg: '#2C2C2C',
-            text: '#FFFFFF',
+            bg: '#fafafa',
+            text: '#71717a',
           },
           blue: {
-            bg: '#0A0A0A',
-            text: '#FFFFFF',
+            bg: '#fafafa',
+            text: '#71717a',
+          },
+          red: {
+            bg: '#f4f4f5',
+            text: '#3f3f46',
           },
           grey: {
-            bg: '#F4F4F5',
-            text: '#71717A',
+            bg: '#f4f4f5',
+            text: '#3f3f46',
           }
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
       },
       boxShadow: {
-        'premium': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
-        'modal': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        'premium': '0 1px 3px rgba(0, 0, 0, 0.06)',
+        'premium-card': '0 2px 6px rgba(0, 0, 0, 0.08)',
+        'modal': '0 20px 40px -10px rgba(0, 0, 0, 0.1)',
+        'btn-hover': '0 4px 12px rgba(0, 0, 0, 0.2)',
       },
       borderWidth: {
         '0.5': '0.5px',
@@ -54,3 +60,4 @@ export default {
   },
   plugins: [],
 }
+

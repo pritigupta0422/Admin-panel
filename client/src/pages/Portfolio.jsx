@@ -153,20 +153,20 @@ export default function Portfolio() {
     <div className="space-y-6">
       
       {/* Filters and Actions Bar */}
-      <div className="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 bg-white p-4 rounded-lg border-0.5 border-gray-200 shadow-premium">
+      <div className="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-premium">
         
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-1">
           {/* Search Input */}
           <div className="relative flex-1 max-w-sm">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-              <Search className="w-4.5 h-4.5" />
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <Search className="w-4 h-4" />
             </div>
             <input
               type="text"
               placeholder="Search category or client..."
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+              className="w-full h-10 pl-10 pr-4 border border-slate-200 rounded-lg text-xs text-slate-700 placeholder-slate-400 bg-white shadow-sm focus:outline-none focus:border-[#0a0a0a] focus:ring-2 focus:ring-[#0a0a0a]/10 transition-all"
             />
           </div>
 
@@ -174,7 +174,7 @@ export default function Portfolio() {
           <select
             value={categoryFilter}
             onChange={e => setCategoryFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg text-sm bg-white text-gray-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+            className="px-3 py-2 border border-slate-200 rounded-lg text-xs bg-white text-slate-750 focus:outline-none focus:border-[#0a0a0a] focus:ring-2 focus:ring-[#0a0a0a]/10 transition-all"
           >
             <option value="">All Categories</option>
             {categories.map(cat => (
@@ -186,94 +186,94 @@ export default function Portfolio() {
         {/* Add Project Button */}
         <button
           onClick={handleOpenCreate}
-          className="flex items-center justify-center px-4 py-2 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors cursor-pointer shadow-premium"
+          className="h-10 px-5 bg-[#0a0a0a] hover:bg-[#1f1f1f] active:scale-[0.97] text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-sm flex items-center justify-center cursor-pointer font-sans"
         >
-          <Plus className="w-4 h-4 mr-1.5" />
+          <Plus className="w-4 h-4 mr-1.5 shrink-0 stroke-[2.5]" />
           Add Project
         </button>
       </div>
 
       {/* Main Table */}
       {error ? (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-750 text-sm max-w-md mx-auto">
+        <div className="p-4 bg-[#fafafa] border border-[#e4e4e7] rounded-lg text-zinc-500 text-sm max-w-md mx-auto">
           {error}
         </div>
       ) : (
-        <div className="bg-white rounded-lg border-0.5 border-gray-200 shadow-premium overflow-hidden">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-premium overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full table-container">
               <thead>
-                <tr className="border-b border-gray-150 text-left bg-gray-55/50">
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Project Name</th>
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Category</th>
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Tech Stack</th>
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Client</th>
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">Visibility</th>
-                  <th className="px-6 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider text-right">Actions</th>
+                <tr className="border-b border-slate-100 text-left bg-slate-50/50">
+                  <th className="px-6 py-3.5 text-[10px] font-bold text-slate-450 uppercase tracking-wider">Project Name</th>
+                  <th className="px-6 py-3.5 text-[10px] font-bold text-slate-450 uppercase tracking-wider">Category</th>
+                  <th className="px-6 py-3.5 text-[10px] font-bold text-slate-450 uppercase tracking-wider">Tech Stack</th>
+                  <th className="px-6 py-3.5 text-[10px] font-bold text-slate-450 uppercase tracking-wider">Client</th>
+                  <th className="px-6 py-3.5 text-[10px] font-bold text-slate-450 uppercase tracking-wider">Visibility</th>
+                  <th className="px-6 py-3.5 text-[10px] font-bold text-slate-450 uppercase tracking-wider text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody className="divide-y divide-slate-100">
                 {loading ? (
                   <tr>
                     <td colSpan="6" className="px-6 py-20 text-center">
                       <div className="flex justify-center items-center">
-                        <Loader2 className="w-6 h-6 text-brand animate-spin" />
-                        <span className="ml-3 text-sm text-gray-550 font-medium">Fetching portfolio files...</span>
+                        <Loader2 className="w-6 h-6 text-[#0a0a0a] animate-spin" />
+                        <span className="ml-3 text-xs text-slate-550 font-bold">Fetching portfolio files...</span>
                       </div>
                     </td>
                   </tr>
                 ) : projects.length > 0 ? (
                   projects.map((project) => (
                     <tr key={project.id} className="table-row">
-                      <td className="px-6 py-4">
-                        <div className="text-sm font-semibold text-gray-800">{project.name}</div>
+                      <td className="px-6 py-3.5 text-left">
+                        <div className="text-xs font-bold text-slate-800">{project.name}</div>
                         {project.description && (
-                          <div className="text-xs text-gray-400 line-clamp-1 mt-0.5">{project.description}</div>
+                          <div className="text-[10px] text-slate-450 line-clamp-1 mt-0.5">{project.description}</div>
                         )}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-500">{project.category}</td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-3.5 text-xs text-slate-500 text-left">{project.category}</td>
+                      <td className="px-6 py-3.5 text-left">
                         <div className="flex flex-wrap gap-1 max-w-[250px]">
                           {project.tech_stack.split(',').map((tech) => (
-                            <span key={tech} className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-[10px] font-medium">
+                            <span key={tech} className="px-2 py-0.5 bg-slate-50 text-slate-600 rounded text-[9px] font-bold border border-slate-100">
                               {tech.trim()}
                             </span>
                           ))}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600 font-medium">{project.client}</td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-3.5 text-xs text-slate-655 font-bold text-left">{project.client}</td>
+                      <td className="px-6 py-3.5 text-left">
                         {project.visible ? (
-                          <span className="inline-flex items-center px-2.5 py-1 text-xs font-semibold rounded-full bg-status-green-bg text-status-green-text">
+                          <span className="inline-flex items-center px-2 py-0.5 text-[9px] font-bold rounded-full uppercase tracking-wider shadow-[0_1px_2px_rgba(0,0,0,0.06)] bg-[#0a0a0a] text-white">
                             <Eye className="w-3 h-3 mr-1" /> Live
                           </span>
                         ) : (
-                          <span className="inline-flex items-center px-2.5 py-1 text-xs font-semibold rounded-full bg-status-orange-bg text-status-orange-text">
+                          <span className="inline-flex items-center px-2 py-0.5 text-[9px] font-bold rounded-full uppercase tracking-wider shadow-[0_1px_2px_rgba(0,0,0,0.06)] bg-transparent text-slate-450 border border-dashed border-slate-300">
                             <EyeOff className="w-3 h-3 mr-1" /> Draft
                           </span>
                         )}
                       </td>
-                      <td className="px-6 py-4 text-right space-x-1">
+                      <td className="px-6 py-3.5 text-right space-x-1">
                         <button
                           onClick={() => handleOpenEdit(project)}
-                          className="p-1.5 inline-flex rounded-md text-gray-400 hover:text-brand hover:bg-gray-100 transition-colors"
+                          className="p-1.5 rounded-md text-slate-400 hover:text-[#0a0a0a] active:scale-[0.97] transition-all"
                           title="Edit project details"
                         >
-                          <Edit2 className="w-4 h-4" />
+                          <Edit2 className="w-3.5 h-3.5" />
                         </button>
                         <button
                           onClick={() => handleOpenDelete(project)}
-                          className="p-1.5 inline-flex rounded-md text-gray-400 hover:text-red-650 hover:bg-red-50 transition-colors"
+                          className="p-1.5 rounded-md text-slate-400 hover:text-black active:scale-[0.97] transition-all"
                           title="Remove project"
                         >
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 className="w-3.5 h-3.5" />
                         </button>
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="6" className="px-6 py-12 text-center text-sm text-gray-400">
+                    <td colSpan="6" className="px-6 py-12 text-center text-xs text-slate-450">
                       No portfolio items found.
                     </td>
                   </tr>
@@ -290,21 +290,21 @@ export default function Portfolio() {
         onClose={() => setIsFormModalOpen(false)}
         title={selectedProject ? 'Edit Portfolio Project' : 'Add New Portfolio Project'}
       >
-        <form onSubmit={handleFormSubmit} className="space-y-4">
+        <form onSubmit={handleFormSubmit} className="space-y-4 text-left">
           {formError && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-xs text-red-650 flex items-center">
-              <AlertCircle className="w-4 h-4 mr-2" />
+            <div className="p-3 bg-[#fafafa] border border-[#e4e4e7] rounded-lg text-xs text-black flex items-center">
+              <AlertCircle className="w-4 h-4 mr-2 flex-shrink-0" />
               {formError}
             </div>
           )}
 
           <div className="space-y-3">
             <div>
-              <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Project Name *</label>
+              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Project Name *</label>
               <input
                 type="text"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-1 focus:ring-brand focus:border-brand"
+                className="w-full px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#0a0a0a] focus:ring-1 focus:ring-[#0a0a0a] text-slate-800"
                 value={formData.name}
                 onChange={e => setFormData({ ...formData, name: e.target.value })}
               />
@@ -312,24 +312,24 @@ export default function Portfolio() {
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Category *</label>
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Category *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Web Development"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-1 focus:ring-brand focus:border-brand"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#0a0a0a] focus:ring-1 focus:ring-[#0a0a0a] text-slate-800"
                   value={formData.category}
                   onChange={e => setFormData({ ...formData, category: e.target.value })}
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Client *</label>
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Client *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Acme Corp"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-1 focus:ring-brand focus:border-brand"
+                  className="w-full px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#0a0a0a] focus:ring-1 focus:ring-[#0a0a0a] text-slate-800"
                   value={formData.client}
                   onChange={e => setFormData({ ...formData, client: e.target.value })}
                 />
@@ -337,22 +337,22 @@ export default function Portfolio() {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Tech Stack * (comma separated)</label>
+              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Tech Stack * (comma separated)</label>
               <input
                 type="text"
                 required
                 placeholder="React, Tailwind CSS, Supabase"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-1 focus:ring-brand focus:border-brand"
+                className="w-full px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#0a0a0a] focus:ring-1 focus:ring-[#0a0a0a] text-slate-800"
                 value={formData.tech_stack}
                 onChange={e => setFormData({ ...formData, tech_stack: e.target.value })}
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mb-1">Description</label>
+              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Description</label>
               <textarea
                 rows="3"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-1 focus:ring-brand focus:border-brand"
+                className="w-full px-3 py-2 border border-slate-200 rounded-lg text-xs focus:outline-none focus:border-[#0a0a0a] focus:ring-1 focus:ring-[#0a0a0a] text-slate-800"
                 value={formData.description}
                 onChange={e => setFormData({ ...formData, description: e.target.value })}
               />
@@ -363,28 +363,28 @@ export default function Portfolio() {
               <input
                 type="checkbox"
                 id="visible-toggle"
-                className="w-4 h-4 text-brand border-gray-300 rounded focus:ring-brand"
+                className="w-4 h-4 text-[#0a0a0a] border-slate-350 rounded focus:ring-[#0a0a0a] cursor-pointer accent-black"
                 checked={formData.visible}
                 onChange={e => setFormData({ ...formData, visible: e.target.checked })}
               />
-              <label htmlFor="visible-toggle" className="text-sm font-semibold text-gray-700 select-none cursor-pointer">
+              <label htmlFor="visible-toggle" className="text-xs font-bold text-slate-700 select-none cursor-pointer uppercase tracking-wider">
                 Publish Live on Site (Visibility Toggle)
               </label>
             </div>
           </div>
 
-          <div className="flex justify-end space-x-3 pt-4 border-t border-gray-100">
+          <div className="flex justify-end space-x-3 pt-4 border-t border-slate-100">
             <button
               type="button"
               onClick={() => setIsFormModalOpen(false)}
-              className="px-4 py-2 border border-gray-300 text-sm font-semibold rounded-md text-gray-650 hover:bg-gray-150 transition-colors"
+              className="px-4 py-2 border border-slate-200 text-slate-500 bg-white rounded-lg hover:bg-slate-50 text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-4 py-2 bg-brand text-white text-sm font-semibold rounded-md hover:bg-brand-dark transition-colors disabled:opacity-50"
+              className="px-4 py-2 bg-[#0a0a0a] hover:bg-[#1f1f1f] text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-sm cursor-pointer disabled:opacity-50"
             >
               {submitting ? 'Saving...' : 'Save Project'}
             </button>
@@ -398,23 +398,23 @@ export default function Portfolio() {
         onClose={() => setIsDeleteModalOpen(false)}
         title="Confirm Project Deletion"
       >
-        <div className="space-y-4">
-          <p className="text-sm text-gray-500 leading-relaxed">
-            Are you sure you want to remove project <strong className="text-gray-800">{selectedProject?.name}</strong>? All association data will be lost.
+        <div className="space-y-4 text-left">
+          <p className="text-xs text-slate-550 leading-relaxed">
+            Are you sure you want to remove project <strong className="text-slate-850">{selectedProject?.name}</strong>? All association data will be lost.
           </p>
 
-          <div className="flex justify-end space-x-3 pt-4 border-t border-gray-100">
+          <div className="flex justify-end space-x-3 pt-4 border-t border-slate-100">
             <button
               type="button"
               onClick={() => setIsDeleteModalOpen(false)}
-              className="px-4 py-2 border border-gray-300 text-sm font-semibold rounded-md text-gray-600 hover:bg-gray-100 transition-colors"
+              className="px-4 py-2 border border-slate-200 text-slate-500 bg-white rounded-lg hover:bg-slate-50 text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
               Cancel
             </button>
             <button
               onClick={handleDeleteSubmit}
               disabled={submitting}
-              className="px-4 py-2 bg-red-650 text-white text-sm font-semibold rounded-md hover:bg-red-700 transition-colors disabled:opacity-50"
+              className="px-4 py-2 bg-red-650 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-sm cursor-pointer disabled:opacity-50"
             >
               {submitting ? 'Deleting...' : 'Delete Project'}
             </button>
