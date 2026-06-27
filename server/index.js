@@ -30,7 +30,11 @@ app.use(morgan('dev'));
 
 // Basic Health Check Route
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+  res.json({ 
+    status: 'healthy', 
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
 });
 
 // Register API Endpoints
